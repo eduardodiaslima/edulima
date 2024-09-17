@@ -1,13 +1,13 @@
-import pool from "../config/database";
+import pool from "../config/dataProduct";
 
-const createUsersTable = async () => {
+const createProductsTable = async () => {
   const client = await pool.connect();
   try {
     const queryText = `
-      CREATE TABLE IF NOT EXISTS users (
+      CREATE TABLE IF NOT EXISTS products (
         id SERIAL PRIMARY KEY,
         name VARCHAR(100) NOT NULL,
-        email VARCHAR(100) UNIQUE NOT NULL
+        price float(8,2) NOT NULL
       );
     `;
     await client.query(queryText);
